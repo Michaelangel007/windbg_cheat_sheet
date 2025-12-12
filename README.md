@@ -91,7 +91,7 @@ start hh.exe "mk:@MSITStore:C:\Program%20Files%20(x86)\Windows%20Kits\10\Debugge
 | `ba i <size>`      | Data breakpoint on Kernel IO 1, 2, 4 |
 | `bc #`             | Clear Breakpoint                     |
 | `bd #`             | Disable Breakpoint                   |
-| `be`#`             | Enable Breakpoint                    |
+| `be #`             | Enable Breakpoint                    |
 | `bl`               | List Breakpoints                     |
 | `bp <address>`     | Set breakpoint                       |
 | `bp <file>!<func>` | Set breakpoint. ie. `bp notepad!main` `bp notepad!wWinMain` |
