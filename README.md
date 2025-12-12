@@ -159,8 +159,8 @@ start hh.exe "mk:@MSITStore:C:\Program%20Files%20(x86)\Windows%20Kits\10\Debugge
 
 # Process, Threads, Modules
 
-| Command     | Description |
-|:------------|:------------|
+| Command       | Description |
+|:--------------|:------------|
 | `|`           | Show PID                        |
 | `~`           | Show Threads                    |
 | `lm`          | List Modules                    |
