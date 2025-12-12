@@ -27,8 +27,20 @@ explorer shell:appsFolder\Microsoft.WinDbg_8wekyb3d8bbwe!Microsoft.WinDbg
 
 ## Setup Misc.
 
-* `Get-AppxPackage Microsoft.WinDbg`
-* `find "Application Id" "C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2511.21001.0_x64__8wekyb3d8bbwe\AppxManifest.xml"`
+There are two ways to get the UWP name to be able to run it from the command line. 
+
+The first and easiest way is:
+
+1. Create a shortcut to the UWP App on the desktop
+2. `cd %HOMEPATH%\Desktop`
+3. Use `strings64 <shortcut.lnk> | find "!"`
+
+Note: `strings64` is included in Mark Russinovich's [strings](https://learn.microsoft.com/is-is/sysinternals/downloads/strings).
+
+The second way is to use PowerShell and dump the `AppxManifest.xml` file:
+
+ * `Get-AppxPackage Microsoft.WinDbg`
+ * `find "Application Id" "C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2511.21001.0_x64__8wekyb3d8bbwe\AppxManifest.xml"`
 
 ```
     <Application Id="Microsoft.WinDbg.CdbX64" Executable="amd64\cdb.exe" EntryPoint="Windows.FullTrustApplication">
@@ -177,25 +189,26 @@ start hh.exe "mk:@MSITStore:C:\Program%20Files%20(x86)\Windows%20Kits\10\Debugge
 # Symbols
 
 | Admin CMD.exe | Description |
-|:------------|:------------|
+|:--------------|:------------|
 | `md - D:\cache\windbg_symbol_server` | Create path for symbol cache directory |
 | `setx _NT_SYMBOL_PATH SRV*D:\cache\windbg_symbol_server*http://msdl.microsoft.com/download/symbols` | Set symbol search path to custom path `D:\cache\windbg_symbol_server` |
 | `reg query HKCU\Environment | findstr /i /c:"_NT_SYMBOL_PATH"` | Display symbol search path |
 | `for /f "tokens=3 delims=% " %%i in ('reg query HKCU\Environment /v _NT_SYMBOL_PATH^| findstr /i /c:"_NT_SYMBOL_PATH"') do set FOO=%%i` | Set `Foo` with current `_NT_SYMBOL_PATH` value |
 
-| Command     | Description |
-|:------------|:------------|
+| Command           | Description |
+|:------------------|:------------|
 | `.reload`         | Reload symbols |
 | `x <game>!<func>` | List executable functions. i.e. `x notepad!*main` or `x Notepad!wWinMain` |
 | `x /a`            | List in Ascending order of addresses |
-| `x /d`            | List in ? |
-| `.sympath`        | To view symbol path |
+| `x /d`            | List in ?            |
+| `.sympath`        | To view symbol path  |
 | `!lmi <exename>`  | To view path to .pdb |
 
 # References
 
 * [WinDBG quick start tutorial](https://codemachine.com/articles/windbg_quickstart.html)
 * [Comprehensive Guide to Using WinDbg (Windows Debugger)](https://gist.github.com/MangaD/3bbeae1b326351b2728d856fb5cd651c)
+* [Strings, Strings64](https://learn.microsoft.com/en-us/sysinternals/downloads/strings)
 
 ---
 
