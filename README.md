@@ -58,7 +58,7 @@ The second way is to use PowerShell and dump the `AppxManifest.xml` file:
     <Application Id="Microsoft.WinDbg" Executable="DbgX.Shell.exe" EntryPoint="Windows.FullTrustApplication">
 ```
 
-**Open "appsFolder" in Explorer:**
+**Open "appsFolder" `C:\Program Files\WindowsApps\` in Explorer:**
 
 ```
 explorer.exe shell:appsfolder
@@ -116,6 +116,8 @@ start hh.exe "mk:@MSITStore:C:\Program%20Files%20(x86)\Windows%20Kits\10\Debugge
 |:------------|:------------|
 | `-c <command>`    | Specify command to run at startup |
 | `-srcpath <path>` | Path to source code               |
+| `-pn <game.exe>`  | Attch to process                  |
+| `-z <memory.dmp>` | File > Open Crash Dump            |
 
 # Command-Line Process -- 
 
@@ -123,6 +125,17 @@ start hh.exe "mk:@MSITStore:C:\Program%20Files%20(x86)\Windows%20Kits\10\Debugge
 |:------------|:------------|
 | `vercommand`| Show command-line of debugger  |
 | `vertarget` | Show Windows version of target |
+
+# Crash dump
+
+Also see [Modules](modules)
+
+| Command           | Description |
+|:------------------|:------------|
+| `-z <memory.dmp>` | File > Open Crash Dump   |
+| `!analyze -v`     | Analyze crash dump       |
+| `!analyze -hang`  | Analyze application hang |
+
 
 # Disassembly ::/debugger/u__unassemble_.htm
 
@@ -146,24 +159,32 @@ start hh.exe "mk:@MSITStore:C:\Program%20Files%20(x86)\Windows%20Kits\10\Debugge
 
 # Memory
 
-| Command     | Description |
-|:------------|:------------|
-| `db`        | Display as 8-bit bytes                        |
-| `dw`        | Display as 16-bit words                       |
-| `dd`        | Display as 32-bit double-words                |
-| `dq`        | Display as 64-bit ints                        |
-| `dp @<reg>` | Display register as pointer. `rsp`, `rbp`     |
-| `dp /c #`   | Display pointer with # columns (instead of 2) |
-| `dp @rsp`   | Display pointer from stack pointer register   |
-| `dps @<reg>`| Display memory as symbol functions. i.e. `dps @rsp` |
+| Command         | Description |
+|:----------------|:------------|
+| `db`            | Display as 8-bit bytes                        |
+| `db <addr> L##` | Display as 8-bit bytes, specified Length bytes|
+| `dw`            | Display as 16-bit words                       |
+| `dd`            | Display as 32-bit double-words                |
+| `dq`            | Display as 64-bit ints                        |
+| `dp @<reg>`     | Display register as pointer. `rsp`, `rbp`     |
+| `dp /c #`       | Display pointer with # columns (instead of 2) |
+| `dp @rsp`       | Display pointer from stack pointer register   |
+| `dps @<reg>`    | Display memory as symbol functions. i.e. `dps @rsp` |
 
-# Process, Threads, Modules
+# Process
 
 | Command       | Description |
 |:--------------|:------------|
 | `|`           | Show PID                        |
+| `!process`    | Show process context            |
+
+
+# Threads, Modules
+
 | `~`           | Show Threads                    |
+| `!thread`     | Show current thread details     |
 | `lm`          | List Modules                    |
+| `lmv`         | List Modules Verbose/details    |
 | `lm m <file>` | Show start end address for game |
 | `lm v <file>` | Show file version               |
 | `? <file>`    | Show start address of the game  |
@@ -203,6 +224,12 @@ start hh.exe "mk:@MSITStore:C:\Program%20Files%20(x86)\Windows%20Kits\10\Debugge
 | `x /d`            | List in ?            |
 | `.sympath`        | To view symbol path  |
 | `!lmi <exename>`  | To view path to .pdb |
+
+# Variables
+
+| Command           | Description |
+|:------------------|:------------|
+| `?? foo`          | Inspect specified variable |
 
 # References
 
