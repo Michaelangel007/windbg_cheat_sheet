@@ -65,6 +65,12 @@ explorer.exe shell:appsfolder
 explorer.exe shell:::{4234d49b-0245-4df3-B780-3893943456e1}
 ```
 
+# Terminology
+
+* **Assembly mode:** Display (DEFAULT) disassembly if source code not available. See `l`.
+* **Module:** An `.exe`, `.dll` or `.sys` file. See `x` command.
+* **Source mode:**  Display source code if available. See `l+t`.
+
 # Help
 
 ```
