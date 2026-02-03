@@ -73,6 +73,12 @@ explorer.exe shell:::{4234d49b-0245-4df3-B780-3893943456e1}
 
 # Help
 
+## Online Help
+
+* https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/
+
+## Offline Help
+
 ```
 start hh.exe "C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\debugger.chm"
 ```
