@@ -243,6 +243,39 @@ Also see [Modules](modules)
 |:------------------|:------------|
 | `?? foo`          | Inspect specified variable |
 
+## Commands Single-Letter
+
+| Command | Summary                       |
+|:-:|:------------------------------------|
+|`a`| Assemble 32-bit instructions.       |
+|`c`| Compare memory.                     |
+|`d`| Display/Dump memory. PEEK           |
+|`e`| Enter values into memory. POKE      |
+|`f`| Fill memory.                        |
+|`g`| Go. Start executing specified thread/process. |
+|`j`| Execute if-else .                   |
+|`k`| Display/Dump stack backtrace/frame. |
+|`l`| `l+`, `l-` Set Source line options. |
+|`m`| Move memory.                        |
+|`n`| Set number base.                    |
+|`p`| Single-step assembly instruction. See `pr` to turn off register display. |
+|`q`| Quit debugger.                                   |
+|`r`| Display/Dump or modify registers                 |
+|`s`| Search memory.                                   |
+|`t`| Trace single instruction/source line.            |
+|`u`| Unassemble instructions. See `ub` for backwards. |
+|`x`| Examine Symbols. i.e. `x notepad!*Main*` |
+|`z`| Execute While   |
+
+## Commands (Two-letters)
+
+| Command | Summary                       |
+|:-:|:------------------------------------|
+
+## Advanced Topics
+
+* _Using Debugger Markup Language_
+
 # References
 
 * [WinDBG quick start tutorial](https://codemachine.com/articles/windbg_quickstart.html)
